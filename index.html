@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>FOFA Web UI</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🔍 FOFA Search</h1>
+    <form id="fofa-form">
+      <input type="text" name="query" placeholder='contoh: app="ThinkPHP"' required />
+      <button type="submit">Cari</button>
+    </form>
+    <ul id="results"></ul>
+  </div>
+
+  <script>
+    const form = document.getElementById('fofa-form');
+    const results = document.getElementById('results');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      results.innerHTML = 'Loading...';
+
+      const formData = new FormData(form);
+      const res = await fetch('/api/fofa', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await res.json();
+      results.innerHTML = '';
+      if (data.results) {
+        data.results.forEach(([host]) => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = host;
+          a.target = '_blank';
+          a.textContent = host;
+          li.appendChild(a);
+          results.appendChild(li);
+        });
+      } else {
+        results.innerHTML = `<li>⚠️ Error: ${data.error || "Tidak ada hasil"}</li>`;
+      }
+    });
+  </script>
+</body>
+</html>
