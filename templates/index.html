@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>FOFA Search</title>
+    <title>FOFA UI</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
     <div class="container">
-        <h1>🔍 FOFA Search Tool</h1>
+        <h1>FOFA Query</h1>
         <form method="post">
-            <input type="text" name="query" placeholder="Masukkan query FOFA" value="{{ query or '' }}" required>
+            <input type="text" name="query" placeholder='ex: app="ThinkPHP"' value="{{ query }}">
             <button type="submit">Cari</button>
         </form>
 
         {% if error %}
-            <p style="color:red;">⚠️ {{ error }}</p>
+            <p style="color: red;">Error: {{ error }}</p>
         {% endif %}
 
         {% if results %}
             <h2>Hasil:</h2>
             <ul>
-                {% for link in results %}
-                    <li><a href="{{ link }}" target="_blank">{{ link }}</a></li>
+                {% for r in results %}
+                    <li><a href="{{ r }}" target="_blank">{{ r }}</a></li>
                 {% endfor %}
             </ul>
         {% endif %}
