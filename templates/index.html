@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FOFA Search</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 FOFA Search Tool</h1>
+        <form method="post">
+            <input type="text" name="query" placeholder="Masukkan query FOFA" value="{{ query or '' }}" required>
+            <button type="submit">Cari</button>
+        </form>
+
+        {% if error %}
+            <p style="color:red;">⚠️ {{ error }}</p>
+        {% endif %}
+
+        {% if results %}
+            <h2>Hasil:</h2>
+            <ul>
+                {% for link in results %}
+                    <li><a href="{{ link }}" target="_blank">{{ link }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
