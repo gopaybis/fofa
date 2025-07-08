@@ -11,8 +11,8 @@ app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-FOFA_EMAIL = os.getenv("FOFA_EMAIL") or "your_email@example.com"
-FOFA_KEY = os.getenv("FOFA_KEY") or "your_fofa_api_key"
+FOFA_EMAIL = os.getenv("FOFA_EMAIL") or "openssh41@gmail.com"
+FOFA_KEY = os.getenv("FOFA_KEY") or "c894a4448e0a399f0b33a07130941e1d"
 
 def get_fofa_url(query):
     b64_query = base64.b64encode(query.encode()).decode()
