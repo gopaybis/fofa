@@ -1,0 +1,26 @@
+body {
+    font-family: sans-serif;
+    background: #f4f4f4;
+    padding: 2rem;
+}
+.container {
+    background: white;
+    padding: 2rem;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+input {
+    width: 80%;
+    padding: 0.5rem;
+}
+button {
+    padding: 0.5rem;
+}
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+li {
+    margin: 5px 0;
+}
